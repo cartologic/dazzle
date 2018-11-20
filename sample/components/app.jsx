@@ -24,24 +24,66 @@ class App extends React.Component {
         rows: [{
           columns: [{
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }, { key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [{ key: 'RocketWidget' }],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }, {
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }, {
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }],
         }, {
           columns: [{
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }, {
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }, {
             className: 'col-md-4 col-sm-6 col-xs-6',
-            widgets: [{ key: 'RocketWidget' }],
+            tabs: [
+              {
+                widgets: [],
+              },
+              {
+                widgets: [],
+              },
+            ],
           }],
         }],
       },
@@ -67,13 +109,14 @@ class App extends React.Component {
     });
   }
 
-  onAdd = (layout, rowIndex, columnIndex) => {
+  onAdd = (layout, rowIndex, columnIndex, tabIndex) => {
     this.setState({
       isModalOpen: true,
       addWidgetOptions: {
         layout,
         rowIndex,
         columnIndex,
+        tabIndex,
       },
     });
   }
@@ -117,9 +160,9 @@ class App extends React.Component {
   };
 
   widgetSelected = (widgetName) => {
-    const { layout, rowIndex, columnIndex } = this.state.addWidgetOptions;
+    const { layout, rowIndex, columnIndex, tabIndex } = this.state.addWidgetOptions;
     this.setState({
-      layout: addWidget(layout, rowIndex, columnIndex, widgetName),
+      layout: addWidget(layout, rowIndex, columnIndex, tabIndex, widgetName),
     });
     this.onRequestClose();
   }
