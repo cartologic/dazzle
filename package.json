@@ -7,7 +7,7 @@
   "style": "lib/style/style.css",
   "scripts": {
     "prebuild": "npm run clean",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.prod.js -p",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.prod.js -p --watch",
     "clean": "rimraf dist coverage",
     "start": "cross-env NODE_ENV=production node server/node-server.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development -d --hot --progress",
