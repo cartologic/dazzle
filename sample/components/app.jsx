@@ -26,15 +26,8 @@ class App extends React.Component {
             className: 'col-md-4 col-sm-6 col-xs-6',
             tabs: [
               {
-                widgets: [{ key: 'RocketWidget' }],
+                widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }],
               },
-              {
-                widgets: [],
-              },
-            ],
-          }, {
-            className: 'col-md-4 col-sm-6 col-xs-6',
-            tabs: [
               {
                 widgets: [],
               },
@@ -43,43 +36,8 @@ class App extends React.Component {
               },
             ],
           }, {
-            className: 'col-md-4 col-sm-6 col-xs-6',
+            className: 'col-md-8 col-sm-6 col-xs-6',
             tabs: [
-              {
-                widgets: [],
-              },
-              {
-                widgets: [],
-              },
-            ],
-          }],
-        }, {
-          columns: [{
-            className: 'col-md-4 col-sm-6 col-xs-6',
-            tabs: [
-              {
-                widgets: [],
-              },
-              {
-                widgets: [],
-              },
-            ],
-          }, {
-            className: 'col-md-4 col-sm-6 col-xs-6',
-            tabs: [
-              {
-                widgets: [],
-              },
-              {
-                widgets: [],
-              },
-            ],
-          }, {
-            className: 'col-md-4 col-sm-6 col-xs-6',
-            tabs: [
-              {
-                widgets: [],
-              },
               {
                 widgets: [],
               },
