@@ -26,7 +26,7 @@ class App extends React.Component {
             className: 'col-md-4 col-sm-6 col-xs-6',
             tabs: [
               {
-                widgetSizes: [{height: '70%'}, {height: '30%'},],
+                widgetSizes: [{height: '30%'}, {height: '70%'}],
                 widgets: [{ key: 'RocketWidget' }, { key: 'AlienWidget' }],
               },
               {
