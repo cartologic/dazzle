@@ -93,7 +93,8 @@
     "popper.js": "^1.14.1",
     "prop-types": "^15.5.10",
     "react-dnd": "^2.6.0",
-    "react-dnd-html5-backend": "^2.6.0"
+    "react-dnd-html5-backend": "^2.6.0",
+    "sweetalert-react": "^0.4.11"
   },
   "peerDependencies": {
     "react": "^16.0.0",

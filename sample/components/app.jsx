@@ -16,6 +16,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../css/custom.css';
 import '../../lib/style/style.css';
 
+
+// import Sweat Alert
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +47,9 @@ class App extends React.Component {
               {
                 widgets: [],
               },
+              {
+                widgets: [],
+              },
             ],
           }],
         }],
@@ -60,6 +68,32 @@ class App extends React.Component {
       isModalOpen: false,
       addWidgetOptions: null,
     };
+  }
+
+  onRemoveTab = (rowIndex, columnIndex, tabIndex) => {
+    const updatedLayout = this.state.layout;
+    const widgetCount = updatedLayout.rows[rowIndex].columns[columnIndex].tabs[tabIndex].widgets.length;
+    const hasWidgets = widgetCount ? true : false;
+    if (!hasWidgets) {
+      updatedLayout.rows[rowIndex].columns[columnIndex].tabs.splice(tabIndex, 1);
+      this.setState({
+        layout: updatedLayout,
+      });
+    } else {
+      this.setState({
+        showRemoveWidgetAlert: true,
+      });
+    }
+  }
+
+  onAddTab = (rowIndex, columnIndex) => {
+    const updatedLayout = this.state.layout;
+    const numberOfTabs = updatedLayout.rows[rowIndex].columns[columnIndex].tabs.length;
+    const newEmptyTab = {widgets: []};
+    updatedLayout.rows[rowIndex].columns[columnIndex].tabs.splice(numberOfTabs, 0, newEmptyTab);
+    this.setState({
+      layout: updatedLayout,
+    });
   }
 
   onRemove = (layout) => {
@@ -96,6 +130,12 @@ class App extends React.Component {
     /* eslint max-len: "off" */
     return (
       <Container>
+        <SweetAlert
+          show={this.state.showRemoveWidgetAlert}
+          title="Tab Already contains widgets!"
+          text="Please remove all the widgets before you can remove the tab"
+          onConfirm={() => this.setState({ showRemoveWidgetAlert: false })}
+        />
         <Header />
         <EditBar onEdit={this.toggleEdit} />
         <Dashboard
@@ -106,6 +146,8 @@ class App extends React.Component {
           addWidgetComponentText="Add"
           onAdd={this.onAdd}
           onMove={this.onMove}
+          onRemoveTab={this.onRemoveTab}
+          onAddTab={this.onAddTab}
         />
         <AddWidgetDialog widgets={this.state.widgets} isModalOpen={this.state.isModalOpen} onRequestClose={this.onRequestClose} onWidgetSelect={this.widgetSelected} />
       </Container>
